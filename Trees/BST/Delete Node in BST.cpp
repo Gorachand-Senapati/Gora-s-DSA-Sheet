@@ -49,7 +49,7 @@ public:
     }
 };
 
-//I also possible for Inorder predecessor which is right most node in left subtree
+//It also possible for Inorder predecessor which is right most node in left subtree
 class Solution {
 public:
 
