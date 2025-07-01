@@ -53,7 +53,7 @@ public:
 class Solution {
 public:
 
-   TreeNode* getInorderSuccessor(TreeNode* root){//right most node in left subtree
+   TreeNode* getInorderpredecessor(TreeNode* root){//right most node in left subtree
     while(root != NULL && root->right!= NULL){
         root = root->right;
     }
@@ -79,7 +79,7 @@ public:
                 delete root;
                 return temp;
             } else {//2 children 
-               TreeNode* IS = getInorderSuccessor(root->left);
+               TreeNode* IS = getInorderpredecessor(root->left);
                root->val = IS->val;
                root->left = deleteNode(root->left, IS->val);
 
