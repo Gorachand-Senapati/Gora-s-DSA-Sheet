@@ -29,6 +29,6 @@ public:
             else low = mid1 +1;
         }
 
-        return 0.0;
+        return 0.0;//Damy 
     }
 };
