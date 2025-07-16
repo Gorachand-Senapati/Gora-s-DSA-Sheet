@@ -20,9 +20,9 @@ public:
                     chars[idx++] = dig;
                 }
             }
-            i--;
+            i--; // for start from new start value
         }
-        chars.resize(idx);
+        chars.resize(idx); // if the arr size more so need resize
         return idx;
     }
 };
