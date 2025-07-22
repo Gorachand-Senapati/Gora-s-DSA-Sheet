@@ -1,13 +1,13 @@
 class Solution {
 public:
  bool isSafe(vector<string>& board, int row, int col, int n) { //O(n)
-    //horizontal 
+    //horizontal row same
     for(int j=0; j<n; j++){
         if(board[row][j] == 'Q'){
             return false;
         }
     }
-    //vertical
+    //vertical col same
      for(int i=0; i<n; i++){
         if(board[i][col] == 'Q'){
             return false;
