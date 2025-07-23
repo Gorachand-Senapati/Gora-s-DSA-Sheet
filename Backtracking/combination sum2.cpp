@@ -24,7 +24,6 @@ public:
     // 5. Backtrack (remove last element and try next)
     path.pop_back();
 }
-
     }
 
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
