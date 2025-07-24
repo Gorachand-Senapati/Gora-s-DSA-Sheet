@@ -29,4 +29,4 @@ void getAllParts(string s, vector<string>&partition,vector<vector<string>>&ans){
         getAllParts(s,partition, ans);
         return ans;
     }
-}; Input: s = “aab” Output: [ ["a","a","b"], ["aa","b"] ]
+};
