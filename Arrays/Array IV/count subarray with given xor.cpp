@@ -23,7 +23,6 @@
 class Solution {
   public:
     long subarrayXor(vector<int> &arr, int k) {
-        // code here
         int n = arr.size(), count =0;
         int xr = 0;
       unordered_map<int, int>mpp;
