@@ -67,8 +67,7 @@ public:
     if (slow == fast) {
         slow = head;
 
-        // this check is needed when slow and fast both meet
-        // at the head of the LL
+        // this check is needed when slow and fast both meet at the head of the LL
         if (slow == fast)
             while (fast->next != slow)
                 fast = fast->next;
