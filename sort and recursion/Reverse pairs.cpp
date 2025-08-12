@@ -46,7 +46,7 @@ public:
     }
 
     int mergeSort(vector<int>& nums, int l, int r) {
-        if (l >= r) return 0;
+        if (l >= r) return 0;//base case4
         int mid = l + (r - l) / 2;
         int cnt = 0;
         cnt += mergeSort(nums, l, mid);//left
