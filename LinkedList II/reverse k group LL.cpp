@@ -23,7 +23,11 @@ ListNode* reverseKGroup(ListNode* head, int k) {
         cnt++;
          }
          return prevNode;
+
+} 
          //another approach not recursion 
+
+
 
          Node* reverseLinkedList(Node *head)
 {

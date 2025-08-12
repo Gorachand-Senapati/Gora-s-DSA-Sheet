@@ -35,7 +35,6 @@ public:
             sec = NULL;
            }
         }
-
         return head;
     }
 };
