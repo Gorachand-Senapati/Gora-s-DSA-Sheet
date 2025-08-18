@@ -60,3 +60,33 @@ public:
         return ans;
     }
 };
+
+//more optimal
+class Solution {
+  public:
+    int getMaxArea(vector<int> &arr) {
+        stack<int> s;
+        int maxArea = 0;
+        int n = arr.size();
+
+        for (int i = 0; i <= n; i++) {
+            // when i == n, treat height as 0
+            int currHeight = (i == n ? 0 : arr[i]);
+//here s.top() is previous small idx and i is the next small idx
+            while (!s.empty() && arr[s.top()] > currHeight) {
+                int height = arr[s.top()];
+                s.pop();
+                int width;
+                if (s.empty()) {
+                    width = i;  // whole range till i
+                } else {
+                    width = i - s.top() - 1;  // between smaller bars
+                }
+
+                maxArea = max(maxArea, height * width);
+            }
+            s.push(i);
+        }
+        return maxArea;
+    }
+};

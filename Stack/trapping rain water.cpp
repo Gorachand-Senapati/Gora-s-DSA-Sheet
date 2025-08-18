@@ -26,3 +26,29 @@ class Solution {
         return res;
     }
 };
+
+//solved by stack
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n = height.size();
+        stack<int> st;
+        int water = 0;
+
+        for (int i = 0; i < n; i++) {
+            // While current bar is higher than the bar at top of stack
+            while (!st.empty() && height[i] > height[st.top()]) {
+                int top = st.top();
+                st.pop();
+
+                if (st.empty()) break; // no left boundary
+
+                int distance = i - st.top() - 1; // width
+                int bounded_height = min(height[i], height[st.top()]) - height[top];
+                water += distance * bounded_height;
+            }
+            st.push(i);
+        }
+        return water;
+    }
+};

@@ -1,27 +1,28 @@
-// class Solution {
-//   public:
-//     int celebrity(vector<vector<int> >& mat) {
-//         // code here
-//         int n = mat.size();
-//         int i=0, j= n-1;
-//         while(i<j){
-//             if(mat[i][j]==1){
-//                 i++;
-//             }else{
-//                 j--;
-//             }
-//         }
-//         int candidate =i;
-//         //verify it candidate
-//         for(int k=0;k<n;k++){
-//             if(k != candidate && 
-//             (mat[k][candidate] ==0 || mat[candidate][k]==1)){
-//                 return -1;
-//             }
-//         }
-//         return candidate;
-//     }
-// };
+class Solution {
+  public:
+    int celebrity(vector<vector<int> >& mat) {
+        // code here
+        int n = mat.size();
+        int i=0, j= n-1;
+        while(i<j){
+            if(mat[i][j]==1){
+                i++;
+            }else{
+                j--;
+            }
+        }
+        int candidate =i;
+        //verify it candidate
+        for(int k=0;k<n;k++){
+            if(k != candidate && 
+            (mat[k][candidate] ==0 || mat[candidate][k]==1)){
+                return -1;
+            }
+        }
+        return candidate;
+    }
+};
+//using stack
 class Solution {
   public:
     int celebrity(vector<vector<int> >& mat) {
