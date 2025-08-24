@@ -9,7 +9,6 @@ class Solution {
       else return n;
   }
     int findXOR(int l, int r) { //O(1)
-        // complete the function here
         return func(l-1) ^ func(r);
     }
 };
