@@ -45,7 +45,7 @@ public:
                 if(helper(board,nextrow, nextcol)){//if 2nd position give true then return true
                     return true;
                 }
-                // if not possible then backtrack and conver empty .
+                // if not possible then backtrack and convert empty cell.
                 board[row][col] = '.';
             }
 
