@@ -3,7 +3,7 @@ public:
     string removeKdigits(string num, int k) {
         stack<char> st; // use stack to build smallest number
         // process each digit
-        for (int i = 0; i < num.size(); i++) {
+        for (int i = 0; i < num.size(); i++) { //O(n)
             // pop bigger digits from stack if we can still remove
             while (!st.empty() && k > 0 && st.top() > num[i]) {
                 st.pop();
@@ -12,7 +12,7 @@ public:
             st.push(num[i]); // push current digit
         }
         // if still have k left, remove from end (because number is increasing like 123456)
-        while (k > 0 && !st.empty()) {
+        while (k > 0 && !st.empty()) {//O(k)
             st.pop();
             k--;
         }
@@ -23,7 +23,7 @@ public:
             st.pop();
         }
         // remove leading zeros → since res is reversed, zeros are at the back
-        while (!res.empty() && res.back() == '0') {
+        while (!res.empty() && res.back() == '0') { //O(n)both pop and reverse 
             res.pop_back();
         }
         // reverse back to correct order
