@@ -5,7 +5,7 @@ class Solution { //tc O(n2) sc O(256)
         int n= s.size(), maxLen=0;
         map<char, int>m;
         for(int i=0;i<n;i++){
-            m.clear();
+            m.clear();//clear previous elements
             for(int j=i;j<n;j++){
                 m[s[j]]++;
                 if(m.size() <= k){
