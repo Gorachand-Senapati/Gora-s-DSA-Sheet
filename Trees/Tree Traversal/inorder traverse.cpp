@@ -31,3 +31,30 @@ class Solution {
         inorderTraverse(node->right, ans);
     }
 };
+
+//Itrative traverse O(n) time and O(n) space
+class Solution {
+  public:
+    // Function to return a list containing the inorder traversal of the tree.
+    vector<int> inOrder(Node* root) {
+        // Your code here
+        stack<Node*>s;
+        vector<int>ans;
+        Node* node= root;
+        while(true){
+            if(node!= NULL){
+                s.push(node);
+                node = node->left;
+            } else {
+                if(s.empty() == true){
+                    break;
+                }
+                node = s.top();
+                s.pop();
+                ans.push_back(node->data);
+                node = node->right;
+            }
+        }
+        return ans;
+    }
+};

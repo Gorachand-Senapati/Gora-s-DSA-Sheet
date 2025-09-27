@@ -25,7 +25,7 @@ private: //for I dont want to seet it public
   }//here not return any thing bcz change is refterence by ans
 };
 
-//using stack
+//using stack - iterative traversal
 class Solution {
   public:
     vector<int> preorder(Node* root) {
