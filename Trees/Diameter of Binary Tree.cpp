@@ -9,36 +9,45 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+
+//BFA O(n2) time and O(h) space
 class Solution {
-public:
-//if we use height and diam function so our time complixity = O(n^2) so change in height function for O(n);
-  
-  int ans =0;;
-  int height(TreeNode* root){
-    if(root== NULL){
-        return 0;
+  public:
+    int diameter(Node* root) {
+        if (root == NULL) return 0;
+
+        int lh = maxDepth(root->left);
+        int rh = maxDepth(root->right);
+
+        int diaThroughRoot = lh + rh;
+        int diaLeft = diameter(root->left);
+        int diaRight = diameter(root->right);
+
+        return max(diaThroughRoot, max(diaLeft, diaRight));
     }
-    int leftHt = height(root->left);
-    int rightHt = height(root->right);
 
-    ans = max(leftHt + rightHt, ans); //here currdiameter calculated
+    int maxDepth(Node* root) { // height function
+        if (root == NULL) return 0;
+        int leftHt = maxDepth(root->left);
+        int rightHt = maxDepth(root->right);
+        return max(leftHt, rightHt) + 1;
+    }
+};
 
-    return max(leftHt, rightHt)+1;
-  }
-
-    int diameterOfBinaryTree(TreeNode* root) {
-    //     if(root == NULL){
-    //         return 0;
-    //     }
-
-    //    int leftDiam = diameterOfBinaryTree(root->left);
-    //    int rightDiam = diameterOfBinaryTree(root->right);
-
-    //    int currDiam = height(root->left) + height(root->right);
-
-    //     return max(currDiam, max(leftDiam, rightDiam));
-
-    height(root);
-    return ans;
+//optimise 
+class Solution {
+  public:
+  int ans=0;
+     int maxDepth(Node* root) {//find height
+        if(root == NULL) return 0;//base case
+        int leftHt = maxDepth(root->left);
+        int rightHt = maxDepth(root->right);
+        ans= max(ans, leftHt +rightHt);//curr diamiter  calcualted
+        return max(leftHt,rightHt)+1;
+    }
+        int diameter(Node* root) {
+            maxDepth(root);
+            return ans;
     }
 };
