@@ -34,3 +34,29 @@ public:
         return ans;
     }
 };
+
+//if need array type path [ [5,3,2], [5,3,4], [5,8,7], [5,8,9] ]
+class Solution {
+  public:
+    vector<vector<int>> Paths(Node* root) {
+        // code here
+        vector<vector<int>>ans;
+        vector<int>path;
+        allPaths(root, path, ans);
+        return ans;
+    }
+    void allPaths(Node* root, vector<int>& path,  vector<vector<int>> &ans){
+        if(root == NULL) return ;
+        path.push_back(root->data);//curr node value store
+        
+        if(root->left == NULL && root->right == NULL){
+            ans.push_back(path);
+        } else{
+            //recursivly call left and right subtree path
+            allPaths(root->left, path, ans);
+            allPaths(root->right, path, ans);
+            
+        }
+        path.pop_back();//backtracking
+    }
+};
