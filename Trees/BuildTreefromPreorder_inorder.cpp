@@ -38,4 +38,34 @@ int search(vector<int>& inorder,int left,int right,int val){
         int preIdx = 0;
         return helper(preorder,inorder,preIdx,0, inorder.size()-1);
     }
-};
+};//O(n2)
+
+class Solution {
+  public:
+    Node* buildTree(vector<int>& inorder, vector<int>& preorder) {
+        unordered_map<int, int> inMp;
+        for (int i = 0; i < inorder.size(); i++) {
+            inMp[inorder[i]] = i; // ✅ map value → index
+        }
+
+        return buildfullTree(preorder, 0, preorder.size() - 1,
+                             inorder, 0, inorder.size() - 1, inMp);
+    }
+
+    Node* buildfullTree(vector<int>& preorder, int preStart, int preEnd,
+                        vector<int>& inorder, int inStart, int inEnd,
+                        unordered_map<int, int>& inMp) { // ✅ pass by reference
+        if (preStart > preEnd || inStart > inEnd)
+            return NULL;
+
+        Node* root = new Node(preorder[preStart]);
+        int inRoot = inMp[root->data];
+        int numsLeft = inRoot - inStart;
+
+        root->left = buildfullTree(preorder, preStart + 1, preStart + numsLeft,
+                                   inorder, inStart, inRoot - 1, inMp);
+        root->right = buildfullTree(preorder, preStart + numsLeft + 1, preEnd,
+                                    inorder, inRoot + 1, inEnd, inMp);
+        return root;
+    }
+};//O(n) time and space
