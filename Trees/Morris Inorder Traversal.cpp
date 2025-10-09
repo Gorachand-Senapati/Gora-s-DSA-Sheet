@@ -31,11 +31,12 @@ public:
                 if(IP->right == NULL){
                     //create Threade connection
                     IP->right = curr;
+                    //for preorder traversal here add in ans the root then go left
                     curr = curr->left;
                 } else {
                     //delete threade
                     IP->right = NULL;
-                    ans.push_back(curr->val);
+                    ans.push_back(curr->val);//for preorder traversal remove this line and go right
                     curr= curr->right;
                 }
             }
