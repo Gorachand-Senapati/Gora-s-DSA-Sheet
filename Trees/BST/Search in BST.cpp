@@ -13,3 +13,13 @@ bool search(Node* root, int x) {
                 return search(root->right, x);
            }
 }
+
+class Solution {
+public:
+    TreeNode* searchBST(TreeNode* root, int x) {
+       while(root != NULL && root->val != x){
+        root = x < root->val ? root->left: root->right;
+       }
+       return root;
+    }
+};
