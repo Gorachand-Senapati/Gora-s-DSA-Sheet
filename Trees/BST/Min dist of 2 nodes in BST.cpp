@@ -14,7 +14,7 @@ public:
             ans= min(ans,root->val -prev->val);
         }
         prev=root;//assign last visited value
-         if(root->right){//left
+         if(root->right){//right
             int rightMin = minDiffInBST(root->right);
             ans= min(ans,rightMin);
         }
