@@ -14,5 +14,7 @@ This repository contains my personal solutions to DSA problems from platforms li
 - Stack/
 - Strings/
 - Trees/
+- Heaps/
+
 
 
