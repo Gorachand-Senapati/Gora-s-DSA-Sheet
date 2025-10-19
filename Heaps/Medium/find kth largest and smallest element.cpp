@@ -31,4 +31,4 @@ class Solution {
         }
         return pq.top();
     }
-};
+};//TC= O(nlogn) SC=O(n)
