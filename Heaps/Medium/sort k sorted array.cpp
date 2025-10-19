@@ -21,3 +21,20 @@ class Solution {
 
     }
 };
+
+//check k sorted or not means check atmost k place distance from current sort position
+class Solution {
+  public:
+    string isKSortedArray(int arr[], int n, int k) {
+        // code here.
+        vector<pair<int, int>>ans;//pair val, index
+        for(int i=0;i<n;i++){
+            ans.push_back({arr[i],i});
+        }
+        sort(ans.begin(), ans.end());
+        for(int i=0;i<n;i++){
+            if(abs(i-ans[i].second) > k) return "No";
+        }
+        return "Yes";
+    }
+};
