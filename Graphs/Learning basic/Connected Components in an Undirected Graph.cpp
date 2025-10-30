@@ -22,7 +22,7 @@ class Solution {
             adj[v].push_back(u);//since the graph is undirected
         }
         //iterate through all vertices and perform DFS on unvisited nodes
-        for(int i=0;i< V; i++){//vised array size
+        for(int i=0;i< V; i++){//visited array size
             if(!vis[i]){
                 vector<int>currentComponent;
                 dfs(i, adj,vis,currentComponent);//dfs traverse
