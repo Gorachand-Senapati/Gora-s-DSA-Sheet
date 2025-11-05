@@ -6,7 +6,7 @@ class Solution {
       for(auto it: adj[node]){
           if(!vis[it]){
               if(detectCycle(adj, it,vis, node)== true)return true;
-          } else if(it != parent){//visited but not parent 
+          } else if(it != parent){//visited but not parent ..so it visit by some other node ..cycle
               return true;
           }
       }

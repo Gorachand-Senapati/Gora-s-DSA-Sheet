@@ -4,7 +4,7 @@ class Solution {
      string b;
 private:
   void dfs(string word, vector<string>&seq){
-    if(word == b){
+    if(word == b){//backtrac so it is need 1st word
 //  Before reversing, seq = ["cog", "dog", "dot", "hot", "hit"]After reverse → ["hit", "hot", "dot", "dog", "cog"]
         reverse(seq.begin(), seq.end());
         ans.push_back(seq);
@@ -90,9 +90,9 @@ class Solution {
             string word = vec.back();//the last guy
             if(word == endWord){
                //the first sequence where we reached the end  
-               if(ans.size() == 0){
+               if(ans.size() == 0){//1st ans is empty so push
                    ans.push_back(vec);
-               }else if(ans[0].size()== vec.size()){
+               }else if(ans[0].size()== vec.size()){// if ans size is equal to vec size then 2nd seq also push
                    ans.push_back(vec);//for another sequence
                }
                continue; //no need to go further after reaching endWord
