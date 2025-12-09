@@ -6,8 +6,8 @@ class Solution {
       pathVis[node]=1;//make both vis
       for(auto it:adj[node]){
           if(!vis[it]){
-             if(dfsCycle(it,adj,vis,pathVis) == true)return true;
-          }else if(pathVis[it]==1){//if the node prev vis but it has vistited the same pathe
+             if(dfsCycle(it,adj,vis,pathVis) == true)return true;//any one true return true
+          }else if(pathVis[it]==1){//if the node prev vis but it has vistited the same path
               return true;
           }
       }
