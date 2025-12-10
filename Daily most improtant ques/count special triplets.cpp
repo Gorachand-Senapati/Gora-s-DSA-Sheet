@@ -64,7 +64,7 @@ public:
         unordered_map<int,int>valid_j;//value freq
         int res =0;
         for(int x:nums){
-            //check it valid k or not means in j map x/2 number's freq present or not
+            //check it valid k or not, means in j map x/2 number's freq present or not
             if(x % 2 ==0 ){
             res = (res+ valid_j[x/2]) % M;
             }
