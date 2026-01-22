@@ -94,3 +94,74 @@ public:
         return after[1][2];//0 idx, 1->buy,0->not buy max 2 transection allow
     }
 };
+
+
+//another approach memoization with 4 states n*4 dp need
+class Solution {
+  public:
+    int f(int i, int cap,int n,vector<int> &prices,vector<vector<int>>&dp){
+        //base case
+        if(i ==n || cap ==4)return 0;//cap max limit 4
+        if(dp[i][cap] != -1) return dp[i][cap];
+        int profit = 0;
+        if(cap %2 ==0){//buy
+            profit = max(-prices[i] + f(i+1,cap+1,n,prices,dp), 
+            0+f(i+1,cap,n,prices,dp));
+        }else{//sell
+            profit= max(prices[i] + f(i+1,cap+1,n,prices,dp),
+            0+ f(i+1,cap,n,prices,dp));
+        }
+        return dp[i][cap] = profit;
+    }
+    int maxProfit(vector<int> &prices) {
+        // code here
+        int n = prices.size();
+        vector<vector<int>>dp(n,vector<int>(4,-1));
+        return f(0,0,n,prices,dp);//start 0 day and 0 transection
+    }
+
+
+    //tabulation
+    class Solution {
+  public:
+    int maxProfit(vector<int> &prices) {
+        // code here
+        int n = prices.size();
+        vector<vector<int>>dp(n+1,vector<int>(5,0));
+        for(int i=n-1;i>=0;i--){
+            for(int cap=0;cap<4;cap++){
+                int profit = 0;
+                if(cap %2 ==0){//buy
+                    profit = max(-prices[i] + dp[i+1][cap+1],0+dp[i+1][cap]);
+                }else{//sell
+                    profit= max(prices[i] + dp[i+1][cap+1], 0+ dp[i+1][cap]);
+                }
+                  dp[i][cap] = profit;
+            }
+        }
+        return dp[0][0];//start 0 day and 0 transection
+    }
+};
+
+//space optimization
+class Solution {
+  public:
+    int maxProfit(vector<int> &prices) {
+        // code here
+        int n = prices.size();
+        vector<int>front(5,0), curr(5,0);
+        for(int i=n-1;i>=0;i--){
+            for(int cap=0;cap<4;cap++){
+                int profit = 0;
+                if(cap %2 ==0){//buy
+                    profit = max(-prices[i] + front[cap+1],0+front[cap]);
+                }else{//sell
+                    profit= max(prices[i] + front[cap+1], 0+ front[cap]);
+                }
+                  curr[cap] = profit;
+            }
+            front = curr;
+        }
+        return front[0];//start 0 day and 0 transection
+    }
+};
