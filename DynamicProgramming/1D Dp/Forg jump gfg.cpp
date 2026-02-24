@@ -35,7 +35,7 @@ private:
   public:
     int minCost(vector<int>& height) {
         int n = height.size();
-        vector<int>dp(n+1,-1);
+        vector<int>dp(n,-1);
         return f(n-1, height,dp);
         
     }
