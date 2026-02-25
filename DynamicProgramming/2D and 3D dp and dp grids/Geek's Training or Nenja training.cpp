@@ -26,7 +26,7 @@ class Solution {
     int maximumPoints(vector<vector<int>>& arr) {
         // Code here
         int n = arr.size();
-       return f(n-1,3,arr);//assume 1st no task choose 3 last task
+       return f(n-1,3,arr);//assume 1st no task choose among 3 , and for these 3 task index 0,1,2  not any task choose you may choose any task
     }
 };
 
