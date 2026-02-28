@@ -58,7 +58,7 @@ class Solution {
             dp[i][0] = true;// If the target sum is 0, we can always achieve it by taking no elements
         }
         if(arr[0] <= sum){//take it
-            dp[0][arr[0]]= true;// If the first element of 'arr' is less than or equal to 'k', set dp[0][arr[0]] to true
+            dp[0][arr[0]]= true;// If the first element of 'arr' is less than or equal to 'target', set dp[0][arr[0]] to true
         }
         for(int i =1;i<n;i++){
             for(int tar=1;tar<=sum;tar++){
