@@ -2,7 +2,7 @@ class Solution {
 public:
    int f(int idx,int buy, int n, vector<int>& prices, vector<vector<int>>&dp){
         //if last day not any profit make
-        if(idx == n || idx == n+1) return 0;
+        if(idx == n || idx == n+1) return 0;//if cross the last day then no profit
         if(dp[idx][buy] != -1) return dp[idx][buy];
         int profit = 0;
         if(buy == 1){ //if buy then 2 ops- take, not take
@@ -26,7 +26,7 @@ public:
     int maxProfit(vector<int>& prices) {
         int n = prices.size();
         vector<vector<int>>dp(n+2,vector<int>(2,0));//buy 2 choice
-        dp[n+1][0] = dp[n+1][1]= dp[n][0] = dp[n][1] = 0;//base case
+        dp[n+1][0] = dp[n+1][1]= dp[n][0] = dp[n][1] = 0;//base case boundary condition
         for(int idx = n-1;idx>=0;idx--){
             for(int buy =0;buy<=1;buy++){
              int profit = 0;
