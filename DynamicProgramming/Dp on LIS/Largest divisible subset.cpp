@@ -29,3 +29,42 @@ public:
         return temp;
     }
 }; // TC: O(N^2) + O(N) for backtracking and SC: O(N) for dp and hash array.
+
+
+//for gfg need greatest lexicographical order we need to change the condition in line 7 to if(nums[i] % nums[prev] == 0 && dp[i] <= 1 + dp[prev]) and rest of the code will be same.
+class Solution {
+public:
+    vector<int> largestSubset(vector<int>& arr) {
+        int n = arr.size();
+        sort(arr.begin(), arr.end());
+
+        vector<vector<int>> dp(n);
+
+        for(int i=0;i<n;i++){
+            dp[i].push_back(arr[i]);
+
+            for(int prev=0;prev<i;prev++){
+                if(arr[i] % arr[prev] == 0){
+                    vector<int> candidate = dp[prev];
+                    candidate.push_back(arr[i]);
+
+                    if(candidate.size() > dp[i].size() ||
+                      (candidate.size() == dp[i].size() && candidate > dp[i])){
+                        dp[i] = candidate;
+                    }
+                }
+            }
+        }
+
+        vector<int> ans;
+
+        for(int i=0;i<n;i++){
+            if(dp[i].size() > ans.size() ||
+              (dp[i].size() == ans.size() && dp[i] > ans)){
+                ans = dp[i];
+            }
+        }
+
+        return ans;
+    }
+};
