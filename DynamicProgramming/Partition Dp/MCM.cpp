@@ -55,7 +55,7 @@ class Solution {
         int n = arr.size();
         vector<vector<int>>dp(n, vector<int>(n,0));
         //base case- a single matrix not need multiplication
-        for(int i=1;i<n;i++) dp[i][i] = 0;//already 0 cover when assign
+        for(int i=1;i<n;i++) dp[i][i] = 0;//already 0 cover when assign a single matrix not need it
         for(int i= n-1;i>=1;i--){
             for(int j=i+1;j<n;j++){//need j to left of i
                 int mini = 1e9;
