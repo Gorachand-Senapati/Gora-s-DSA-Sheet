@@ -41,3 +41,24 @@ public:
         return dp[0][1];//0 idx, 1->buy,0->not buy
     }
 };
+
+//space optimization
+
+class Solution {
+public:   int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+       vector<int>after(2,0), after2(2,0), curr(2,0);//buy 2 choice
+       after[0] = after[1] = after2[0] = after2[1] = 0;//base case
+        for(int idx = n-1;idx>=0;idx--){
+            for(int buy =0;buy<=1;buy++){
+             int profit = 0;
+             if(buy){ //if buy then 2 ops- take, not take
+                profit = max(-prices[idx] + after[0], 0 + after[1]);
+             }else{// if sell sell that day or another day
+                profit = max(prices[idx] + after2[1], 0 + after[0]);
+             }
+              curr[buy]= profit;
+            }
+            after2= after;//after 2 step update
+            after= curr;//after 1 step update
+        }

@@ -43,3 +43,25 @@ public:
         return dp[0][1];//0 idx, 1->buy,0->not buy
     }
 };
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices, int fee) {
+        int n = prices.size();
+       vector<int>after(2,0), curr(2,0);//buy 2 choice
+       after[0] = after[1] = 0;//base case
+        for(int idx = n-1;idx>=0;idx--){
+            for(int buy =0;buy<=1;buy++){
+             int profit = 0;
+             if(buy){ //if buy then 2 ops- take, not take
+                profit = max(-prices[idx] + after[0], 0 + after[1]);
+             }else{// if sell sell that day or another day
+                profit = max(prices[idx]-fee + after[1], 0 + after[0]);
+             }
+              curr[buy]= profit;
+            }
+            after= curr;
+        }
+        return after[1];//0 idx, 1->buy,0->not buy
+    }
+};
