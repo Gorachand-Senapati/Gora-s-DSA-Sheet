@@ -17,8 +17,8 @@ class Solution {
             //recursively check how  the number of ways to make the left and right subexpressions true or false
             int lt = f(i,idx-1,1,s);// Number of ways to make the left expression true.
             int lf = f(i,idx-1,0,s);// Number of ways to make the left expression false.
-            int rt = f(idx+1,j,1,s);// Number of ways to make the left expression true.
-            int rf = f(idx+1,j,0,s);// Number of ways to make the left expression false.
+            int rt = f(idx+1,j,1,s);// Number of ways to make the right expression true.
+            int rf = f(idx+1,j,0,s);// Number of ways to make the right expression false.
             
             //check the operator and current indx change accordingly
             if(s[idx] == '&'){
