@@ -44,23 +44,32 @@ public:
     }
 };
 
+
+class Solution {
+  public:
+    bool wordBreak(string &s, vector<string> &dictionary) {
+        // code here
+         unordered_set<string>st(dictionary.begin(), dictionary.end());
+         int n = s.size();
+         vector<bool>dp(n+1,0);
+         dp[n]= true;
+         for(int i=n-1;i>=0;i--){
+             for(int j=i;j<n;j++){
+                 if(st.count(s.substr(i,j-i+1)) == true && dp[j+1]== true){
+                     dp[i]= true;
+                     break;
+                 }
+             }
+         }
+         return dp[0];
+    }
+};
+
+
 //DP TABULATION TC= O(N^2) SC= O(N)
 class Solution {
 public:
-   bool solve(int start, string &s, unordered_set<string>&st,vector<int>&dp){
-     if(start == s.size()) return true;// if word finish
-     //cut the string
-     if(dp[start] != -1) return dp[start];
-     for(int end =start+1;end<=s.size();end++){
-        string part = s.substr(start,end-start);//substring(0,2)=le example
-        if(st.count(part)) {
-            if(solve(end,s,st,dp)){
-                return dp[start]= true;
-            }
-        }
-     }
-     return dp[start] = false;
-   }
+  
     bool wordBreak(string s, vector<string>& wordDict) {
         unordered_set<string>st(wordDict.begin(), wordDict.end());
         int n = s.size();
